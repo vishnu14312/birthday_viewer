@@ -21,8 +21,25 @@
 //= require fullcalendar/locale-all
 
 function eventCalendar() {
-  return $('#calendar').fullCalendar({ 
-  	events: '/birthday.json' });
+  return $('#calendar').fullCalendar({
+  	customButtons: {
+        add_birthday: {
+            text: 'Add Birthday',
+            click: function() {
+
+  $.ajax({type: "GET", url: '/birthdays/new', success: function(result){
+    $("body").html(result);
+  }});
+           
+            }
+        }
+    }, 
+  	header: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay,add_birthday'
+      },
+  	events: '/birthdays.json' });
 };
 function clearCalendar() {
   $('#calendar').fullCalendar('delete'); 

@@ -7,12 +7,12 @@
 
 <p>
   <strong>Date:</strong>
-  <%= @birthday.date %>
+  <%= @birthday.birthday %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @birthday.user %>
+  <%= @birthday.user.email %>
 </p>
 
 <%= link_to 'Edit', edit_birthday_path(@birthday) %> |

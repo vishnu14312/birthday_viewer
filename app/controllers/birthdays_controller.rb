@@ -1,6 +1,6 @@
 class BirthdaysController < ApplicationController
   before_action :set_birthday, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
   # GET /birthdays or /birthdays.json
   def index
     @birthdays = current_user.birthdays
@@ -12,7 +12,7 @@ class BirthdaysController < ApplicationController
 
   # GET /birthdays/new
   def new
-    @birthday = Birthday.new
+    @birthday = current_user.birthdays.new
   end
 
   # GET /birthdays/1/edit
@@ -21,11 +21,11 @@ class BirthdaysController < ApplicationController
 
   # POST /birthdays or /birthdays.json
   def create
-    @birthday = Birthday.new(birthday_params)
+    @birthday = current_user.birthdays.new(birthday_params)
 
     respond_to do |format|
       if @birthday.save
-        format.html { redirect_to @birthday, notice: "Birthday was successfully created." }
+        format.html { redirect_to pages_home_url, notice: "Birthday was successfully created." }
         format.json { render :show, status: :created, location: @birthday }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -38,7 +38,7 @@ class BirthdaysController < ApplicationController
   def update
     respond_to do |format|
       if @birthday.update(birthday_params)
-        format.html { redirect_to @birthday, notice: "Birthday was successfully updated." }
+        format.html { redirect_to pages_home_url, notice: "Birthday was successfully updated." }
         format.json { render :show, status: :ok, location: @birthday }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -64,6 +64,6 @@ class BirthdaysController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def birthday_params
-      params.require(:birthday).permit(:name, :date, :user_id)
+      params.require(:birthday).permit(:name, :birthday)
     end
 end

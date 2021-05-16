@@ -16,7 +16,7 @@
     <% @birthdays.each do |birthday| %>
       <tr>
         <td><%= birthday.name %></td>
-        <td><%= birthday.date %></td>
+        <td><%= birthday.birthday %></td>
         <td><%= birthday.user %></td>
         <td><%= link_to 'Show', birthday %></td>
         <td><%= link_to 'Edit', edit_birthday_path(birthday) %></td>
