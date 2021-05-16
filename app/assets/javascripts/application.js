@@ -21,7 +21,8 @@
 //= require fullcalendar/locale-all
 
 function eventCalendar() {
-  return $('#calendar').fullCalendar({ });
+  return $('#calendar').fullCalendar({ 
+  	events: '/birthday.json' });
 };
 function clearCalendar() {
   $('#calendar').fullCalendar('delete'); 

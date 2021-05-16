@@ -3,7 +3,7 @@ class BirthdaysController < ApplicationController
 
   # GET /birthdays or /birthdays.json
   def index
-    @birthdays = Birthday.all
+    @birthdays = current_user.birthdays
   end
 
   # GET /birthdays/1 or /birthdays/1.json
