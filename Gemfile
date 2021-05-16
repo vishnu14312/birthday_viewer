@@ -31,6 +31,7 @@ gem 'execjs'
 gem 'therubyracer'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
+gem 'ice_cube'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
